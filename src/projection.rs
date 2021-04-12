@@ -266,12 +266,12 @@ impl<S: BaseFloat> From<Ortho<S>> for Matrix4<S> {
 
         let c2r0 = S::zero();
         let c2r1 = S::zero();
-        let c2r2 = -two / (ortho.far - ortho.near);
+        let c2r2 = two / (ortho.near - ortho.far);
         let c2r3 = S::zero();
 
         let c3r0 = -(ortho.right + ortho.left) / (ortho.right - ortho.left);
         let c3r1 = -(ortho.top + ortho.bottom) / (ortho.top - ortho.bottom);
-        let c3r2 = -(ortho.far + ortho.near) / (ortho.far - ortho.near);
+        let c3r2 = -(ortho.near + ortho.far) / (ortho.near - ortho.far);
         let c3r3 = S::one();
 
         #[cfg_attr(rustfmt, rustfmt_skip)]
